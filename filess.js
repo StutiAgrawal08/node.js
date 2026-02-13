@@ -82,11 +82,22 @@ const functionality = ()=>{
 const fetchData = async ()=>{
     console.log("started");
     // await functionality();
-    await fetch("https://jsonplaceholder.typicode.com/todos/1")
+    const a=await fetch("https://jsonplaceholder.typicode.com/todos/1")
        .then((response) => response.json())
        .then((json)=> console.log(json));
+    const b=fetch("https://jsonplaceholder.typicode.com/todos/1")
+       .then((response) => response.json())
+       .then((json)=> console.log(json));
+    const aValue=await a;
+    const bValue=await b;
     console.log("ended");
 };
+
+//event loop
+// a -----Done 
+// b -----Done
+// a -----Done 
+//              b -----Done
 console.log("started -----1");
 fetchData();
 console.log("started -----2");
